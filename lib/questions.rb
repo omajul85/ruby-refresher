@@ -119,12 +119,7 @@ end
 # [1, 3, 5, 4, 1, 2, 6, 2, 1, 3, 7]
 # becomes [1, 3, 5, 4, 1, 2]
 def get_elements_until_greater_than_five(array)
-	res = []
-	array.each do |elem|
-		break if elem > 5
-		res << elem
-	end
-	res
+	array.take_while{ |elem| elem <= 5}
 end
 
 # turn an array (with an even number of elements) into a hash, by
@@ -134,6 +129,7 @@ def convert_array_to_a_hash(array)
 	h = {}
 	array.each_slice(2){ |a,b| h[a] = b }
 	h
+	# or array.each_slice(2).to_a.to_h
 end
 
 # get all the letters used in an array of words and return
